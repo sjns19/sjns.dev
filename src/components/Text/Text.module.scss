@@ -1,0 +1,123 @@
+.txt {
+
+	&-monospaced {
+		font-family: 'Courier New', Courier, monospace;
+		font-weight: bold;
+	}
+
+	// colors
+	&-secondary {
+		color: $--color-secondary-default;
+	}
+
+	&-grey {
+		color: $--color-grey-default;
+	}
+
+	&-dark-grey {
+		color: $--color-darkgrey-default;
+	}
+
+	&-accent {
+		color: $--color-accent-default;
+	}
+
+	// sizes
+	&-xs {
+		font-size: 0.75rem;
+	}
+
+	&-sm {
+		font-size: 0.85rem;
+	}
+
+	&-mdl {
+		font-size: 1.25rem;
+	}
+
+	&-lg {
+		@include font(1.75rem, $line-height: 1.35);
+	}
+
+	&-xl {
+		@include font(2rem, $line-height: 1.35);
+	}
+
+	&-xxl {
+		@include font(2.55rem, $line-height: 1.35);
+	}
+
+	// weight
+
+	&-light {
+		font-weight: 300;
+	}
+
+	&-medium {
+		font-weight: 500;
+	}
+
+	&-bold {
+		font-weight: 700;
+	}
+
+	// casing
+	&-uppercase {
+		text-transform: uppercase;
+	}
+}
+
+// Theming
+:global([data-preferred-color-scheme="oceanic"]) .txt {
+	&-secondary {
+		color: $--color-secondary-oceanic;
+	}
+
+	&-grey {
+		color: $--color-grey-oceanic;
+	}
+
+	&-dark-grey {
+		color: $--color-darkgrey-oceanic;
+	}
+
+	&-accent {
+		color: $--color-accent-oceanic;
+	}
+}
+
+:global([data-preferred-color-scheme="cookie"]) .txt {
+	&-secondary {
+		color: $--color-secondary-cookie;
+	}
+
+	&-grey {
+		color: $--color-grey-cookie;
+	}
+
+	&-dark-grey {
+		color: $--color-darkgrey-cookie;
+	}
+
+	&-accent {
+		color: $--color-accent-cookie;
+	}
+}
+
+:global([data-preferred-color-scheme="pumpkin"]) .txt {
+	&-secondary {
+		color: $--color-secondary-pumpkin;
+	}
+
+	&-grey {
+		color: $--color-grey-pumpkin;
+	}
+
+	&-dark-grey {
+		color: $--color-darkgrey-pumpkin;
+	}
+
+	&-accent {
+		color: $--color-accent-pumpkin;
+	}
+}

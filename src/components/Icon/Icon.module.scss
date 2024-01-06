@@ -1,0 +1,49 @@
+.icon {
+	position: relative;
+	@include flex($display: inline-flex, $align: center);
+	color: $--color-grey-default;
+	padding: 0.5rem;
+	margin-right: 0.55rem;
+	cursor: pointer;
+	opacity: 0.75;
+	transition: opacity $--transition-time $--bezier-curve;
+
+	&::before {
+		position: absolute;
+		content: '';
+		background-color: $--color-grey-default;
+		@include absolute-cover;
+		opacity: 0;
+		border-radius: 25px;
+		z-index: -1;
+	}
+
+	&:hover {
+		opacity: 1;
+		-webkit-filter: brightness(1.2);
+		filter: brightness(1.2);
+		transition: none;
+
+		&::before {
+			opacity: 0.15;
+		}
+	}
+
+	&:active::before,
+	&:focus::before {
+		opacity: 0.25;
+	}
+}
+
+// Theming
+:global([data-preferred-color-scheme="oceanic"]) .icon {
+	color: $--color-grey-oceanic;
+}
+
+:global([data-preferred-color-scheme="cookie"]) .icon {
+	color: $--color-grey-cookie;
+}
+
+:global([data-preferred-color-scheme="pumpkin"]) .icon {
+	color: $--color-grey-pumpkin;
+}

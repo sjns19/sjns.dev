@@ -1,0 +1,52 @@
+/** SASS Variables */
+
+// Colors
+
+// default palette
+$--color-primary-default: #000000;
+$--color-accent-default: #22a8f3;
+$--color-secondary-default: #d5d6da;
+$--color-grey-default: #95969a;
+$--color-darkgrey-default: #77787a;
+
+// Oceanic palette
+$--color-primary-oceanic: #07131f;
+$--color-accent-oceanic: #3bcde3;
+$--color-secondary-oceanic: #d9e0e7;
+$--color-grey-oceanic: #8e9dac;
+$--color-darkgrey-oceanic: #6d7d8c;
+$--color-hero-oceanic: #175e9c;
+
+// Cookie palette
+$--color-primary-cookie: #181715;
+$--color-accent-cookie: #e6c38c;
+$--color-secondary-cookie: #f5f0e9;
+$--color-grey-cookie: #a9a49c;
+$--color-darkgrey-cookie: #88857f;
+$--color-hero-cookie: #7a746a;
+
+// Purple palette
+$--color-primary-pumpkin: #191f13;
+$--color-accent-pumpkin: #f78503;
+$--color-secondary-pumpkin: #e8efe0;
+$--color-grey-pumpkin: #9da396;
+$--color-darkgrey-pumpkin: #797f72;
+$--color-hero-pumpkin: #7d9b5b;
+
+// Fonts
+$--base-font: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+
+// Animation time and transition function
+$--bezier-curve: cubic-bezier(0.4, 0.0, 0.2, 1);
+$--transition-time: 0.35s;
+
+// Screen breakpoints
+$--breakpoint-small: 370px;
+$--breakpoint-tablet: 768px;
+$--breakpoint-mobile: 585px;
+$--breakpoint-unsupported: '(max-height: #{$--breakpoint-mobile - 35px}), (max-width: #{$--breakpoint-mobile}) and (max-height: 550px)';
+
+$--thumbnail-item-height: 370px;
+$--thumbnail-border-radius: 1.55rem;
+
+$--link-underline-opacity: 0.35;

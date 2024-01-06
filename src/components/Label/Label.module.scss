@@ -1,0 +1,61 @@
+.label {
+	display: inline-block;
+	font-size: 0.75rem;
+	color: $--color-grey-default;
+	padding: 0.25rem 0.75rem;
+	margin: 0.55rem 0.55rem 0 0;
+	border-radius: 25px;
+	border: 1px solid rgba($--color-darkgrey-default, 0.6);
+	cursor: default;
+
+	svg {
+		position: relative;
+		bottom: -0.15rem;
+		margin: 0 0 0 0.35rem;
+	}
+
+	&-icon-left svg {
+		margin: 0 0.35rem 0 0;
+	}
+
+	&-accent {
+		background-color: rgba($--color-accent-default, 0.15);
+		color: $--color-accent-default;
+		border: none;
+	}
+
+	@include breakpoint(mobile) {
+		font-size: 0.9rem;
+	}
+}
+
+// Theming
+:global([data-preferred-color-scheme="oceanic"]) .label {
+	color: $--color-grey-oceanic;
+	border-color: rgba($--color-darkgrey-oceanic, 0.6);
+
+	&-accent {
+		background-color: rgba($--color-accent-oceanic, 0.15);
+		color: $--color-accent-oceanic;
+	}
+}
+
+:global([data-preferred-color-scheme="cookie"]) .label {
+	color: $--color-grey-cookie;
+	border-color: rgba($--color-darkgrey-cookie, 0.6);
+
+	&-accent {
+		background-color: rgba($--color-accent-cookie, 0.15);
+		color: $--color-accent-cookie;
+	}
+}
+
+:global([data-preferred-color-scheme="pumpkin"]) .label {
+	color: $--color-grey-pumpkin;
+	border-color: rgba($--color-darkgrey-pumpkin, 0.6);
+
+	&-accent {
+		background-color: rgba($--color-accent-pumpkin, 0.15);
+		color: $--color-accent-pumpkin;
+	}
+}

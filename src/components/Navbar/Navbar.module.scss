@@ -1,0 +1,303 @@
+.navbar {
+	position: fixed;
+	width: 100%;
+	@include inset($top: 0, $left: 0);
+	z-index: 5;
+
+	// .navbar-solid
+	&-solid {
+		background-color: $--color-primary-default;
+	}
+
+	// .navbar-title
+	&-title {
+		font-weight: 500;
+		padding-left: 0.75rem;
+		opacity: 0;
+		border-left: 2px solid rgba($--color-grey-default, 0.3);
+		transition: opacity $--transition-time $--bezier-curve;
+		cursor: default;
+	}
+
+	// .navbar.is-title-shown
+	&.is-title-shown &-title {
+		opacity: 1;
+	}
+
+	// .navbar.is-opened - animate content
+	&.is-opened & {
+		&-content {
+			transform: translateY(0);
+			pointer-events: all;
+		}
+
+		&-nav-link {
+			animation: slide-up $--transition-time 0.2s cubic-bezier(1, 0, .26, 1.1) forwards;
+		}
+
+		&-toggler {
+
+			&::before {
+				transform: translateY(4px);
+			}
+
+			&::after {
+				opacity: 0;
+			}
+		}
+	}
+
+	// .navbar.is-closed
+	&.is-closed &-nav-link {
+		animation: slide-down $--transition-time cubic-bezier(1, 0, .26, 1.1) forwards;
+	}
+
+	// .navbar-inner
+	&-inner {
+		@include flex($align: center, $justify: space-between);
+		padding: 0.75rem 1.55rem;
+	}
+
+	// .navbar-item
+	&-item {
+		padding: 0.55rem;
+
+		&-left {
+			padding-left: 0;
+			margin-right: auto;
+		}
+
+		&-right {
+			padding-right: 0;
+			margin-left: auto;
+		}
+	}
+
+	// .navbar-nav
+	&-nav {
+		@include flex($align: center, $direction: column);
+
+		// Change direction in mobile landscape mode
+		@include screen-size('(max-height: #{$--breakpoint-small})') {
+			flex-direction: row;
+		}
+
+		// .navbar-nav-item
+		&-item {
+			margin: 0.55rem;
+			overflow: hidden;
+		}
+
+		// .navbar-nav-link
+		&-link {
+			display: block;
+			color: $--color-darkgrey-default;
+			@include font(1.75rem, $weight: 700, $decoration: none);
+			cursor: pointer;
+			text-decoration: none;
+			transform: translateY(40px);
+			transition: color $--transition-time $--bezier-curve;
+
+			// Fullstop/period at the end of the nav link with the accent color, shown when the link is active
+			&::after {
+				content: '.';
+				color: $--color-accent-default;
+				opacity: 0;
+			}
+
+			&:hover {
+				color: $--color-secondary-default;
+				transition: none;
+			}
+
+			// .navbar-nav-link.is-active
+			&.is-active {
+				color: $--color-secondary-default;
+
+				&::after {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	// .navbar-logo
+	&-logo {
+		display: inline-block;
+		text-decoration: none;
+	}
+
+	/*	//.navbar-logo-img
+		&-img {
+			display: inline-block;
+			@include hw(100%);
+			vertical-align: middle;
+		}
+	}*/
+
+	&-vector-accent {
+		fill: $--color-accent-default;
+	}
+
+	&-vector-secondary {
+		fill: $--color-secondary-default;
+	}
+
+	// .navbar-contents
+	&-content {
+		position: fixed;
+		@include flex($align: center, $justify: center, $direction: column);
+		background-color: $--color-primary-default;
+		@include absolute-cover;
+		pointer-events: none;
+		transform: translateY(-100%);
+		transition: transform $--transition-time cubic-bezier(1, 0, .26, 1.1);
+	}
+
+	// .navbar-toggler
+	&-toggler {
+		display: block;
+		position: relative;
+		background-color: transparent;
+		margin-right: 0.55rem;
+		@include hw(18px);
+		border: none;
+		outline: none;
+		-webkit-appearance: none;
+		appearance: none;
+		cursor: pointer;
+
+		// Lines
+		&::before,
+		&::after {
+			position: absolute;
+			content: '';
+			background-color: $--color-secondary-default;
+			@include hw(2px, 100%);
+			left: 0;
+			border-radius: 25px;
+		}
+
+		&::before {
+			top: 0.25rem;
+			transition: transform $--transition-time $--bezier-curve;
+		}
+
+		&::after {
+			bottom: 0.25rem;
+			transition: opacity $--transition-time $--bezier-curve;
+		}
+	}
+}
+
+// Theming
+:global([data-preferred-color-scheme="oceanic"]) .navbar {
+
+	&-solid,
+	&-content {
+		background-color: $--color-primary-oceanic;
+	}
+
+	&-vector-accent {
+		fill: $--color-accent-oceanic;
+	}
+
+	&-vector-secondary {
+		fill: $--color-secondary-oceanic
+	}
+
+	&-nav-link {
+		color: $--color-darkgrey-oceanic;
+
+		&::after {
+			color: $--color-accent-oceanic;
+		}
+
+		&:hover,
+		&.is-active {
+			color: $--color-secondary-oceanic;
+		}
+	}
+
+	&-toggler {
+
+		&::before,
+		&::after {
+			background-color: $--color-secondary-oceanic;
+		}
+	}
+}
+
+:global([data-preferred-color-scheme="cookie"]) .navbar {
+
+	&-solid,
+	&-content {
+		background-color: $--color-primary-cookie;
+	}
+
+	&-vector-accent {
+		fill: $--color-accent-cookie;
+	}
+
+	&-vector-secondary {
+		fill: $--color-secondary-cookie;
+	}
+
+	&-nav-link {
+		color: $--color-darkgrey-cookie;
+
+		&::after {
+			color: $--color-accent-cookie;
+		}
+
+		&:hover,
+		&.is-active {
+			color: $--color-secondary-cookie;
+		}
+	}
+
+	&-toggler {
+
+		&::before,
+		&::after {
+			background-color: $--color-secondary-cookie;
+		}
+	}
+}
+
+:global([data-preferred-color-scheme="pumpkin"]) .navbar {
+
+	&-solid,
+	&-content {
+		background-color: $--color-primary-pumpkin;
+	}
+
+	&-vector-accent {
+		fill: $--color-accent-pumpkin;
+	}
+
+	&-vector-secondary {
+		fill: $--color-secondary-pumpkin;
+	}
+
+	&-nav-link {
+		color: $--color-darkgrey-pumpkin;
+
+		&::after {
+			color: $--color-accent-pumpkin;
+		}
+
+		&:hover,
+		&.is-active {
+			color: $--color-secondary-pumpkin;
+		}
+	}
+
+	&-toggler {
+
+		&::before,
+		&::after {
+			background-color: $--color-secondary-pumpkin;
+		}
+	}
+}

@@ -1,0 +1,49 @@
+/** Animation keyframes */
+
+@keyframes slide-up {
+	from {
+		transform: translateY(50px);
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slide-down {
+	from {
+		transform: translateY(0);
+	}
+
+	to {
+		transform: translateY(50px);
+	}
+}
+
+@keyframes loading {
+	0% {
+		transform: translateX(0) scaleX(0);
+	}
+
+	50% {
+		transform: translateX(0) scaleX(1);
+	}
+
+	100% {
+		transform: translateX(100%) scaleX(0.5);
+	}
+}
+
+@keyframes pump {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.4;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

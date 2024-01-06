@@ -1,0 +1,244 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	margin-bottom: 0.75rem;
+}
+
+html {
+	@include font(16px, $weight: 500, $family: $--base-font, $line-height: 1.45, $kering: normal);
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
+	-ms-text-size-adjust: 100%;
+	-moz-osx-font-smoothing: grayscale;
+
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	::-webkit-scrollbar-track {
+		background-color: $--color-primary-default;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: darken($--color-grey-default, 20);
+		border-radius: 10px;
+
+		&:hover {
+			background-color: $--color-grey-default;
+		}
+	}
+}
+
+body {
+	background-color: $--color-primary-default;
+	color: $--color-secondary-default;
+	padding: 4.75rem 0 0;
+	margin: 0;
+
+	// Animated strip on top of the window displayed while route is changing
+	&::before,
+	&::after {
+		position: fixed;
+		display: none;
+		content: '';
+		background-color: $--color-accent-default;
+		@include hw(4px, 100%);
+		@include inset(0, 0, $right: 0);
+		opacity: 0.5;
+		z-index: 8;
+		transform-origin: left;
+	}
+
+	&::after {
+		opacity: 1;
+		animation: loading 1.5s forwards infinite $--bezier-curve;
+	}
+
+	// Show the strip while route is changing
+	&.route-is-changing {
+
+		&::before,
+		&::after {
+			display: block;
+		}
+	}
+
+	@include breakpoint(mobile) {
+		padding: 3.75rem 0.55rem 0;
+	}
+}
+
+.br__spaced {
+	content: '';
+	display: block;
+	margin: 15%;
+}
+
+.link {
+	color: $--color-secondary-default;
+	background-image:
+		linear-gradient(to right, rgba($--color-accent-default, $--link-underline-opacity), rgba($--color-accent-default, $--link-underline-opacity)),
+		linear-gradient(to right, $--color-accent-default, $--color-accent-default);
+	background-repeat: no-repeat;
+	background-size: 100% 0.1rem, 0 0.1rem;
+	background-position: 100% 100%, 0 100%;
+	padding-bottom: 0.2rem;
+	transition: background-size 400ms;
+	text-decoration: none;
+
+	// Animate the underline from right to left
+	&-animate-rtl {
+		background-size: 100% 0.1rem, 0 0.1rem;
+		background-position: 100% 100%, 100% 100%;
+	}
+
+	&:hover,
+	&:focus {
+		background-size: 100% 0.1rem, 100% 0.1rem;
+	}
+}
+
+// Hero background image holder
+#hero-image {
+	position: absolute;
+	background: url('/images/me.png') no-repeat;
+	background-size: 100% 100%;
+	@include hw(565px, 455px);
+	right: 0;
+	z-index: -1;
+
+	&::before {
+		position: absolute;
+		content: '';
+		@include hw(100%);
+		right: 0;
+		opacity: 0.2;
+	}
+
+	@include breakpoint(mobile) {
+		@include hw(465px, 355px);
+		margin: 0 auto;
+		top: 12%;
+		left: 0;
+	}
+}
+
+// Theming
+[data-preferred-color-scheme="oceanic"] {
+	::-webkit-scrollbar-track {
+		background-color: $--color-primary-oceanic;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: darken($--color-grey-oceanic, 20);
+
+		&:hover {
+			background-color: $--color-grey-oceanic;
+		}
+	}
+
+	body {
+		background-color: $--color-primary-oceanic;
+		color: $--color-secondary-oceanic;
+
+		// Page route loading strip
+		&::before,
+		&::after {
+			background-color: $--color-accent-oceanic;
+		}
+	}
+
+	.link {
+		background-image:
+			linear-gradient(to right, rgba($--color-accent-oceanic, $--link-underline-opacity), rgba($--color-accent-oceanic, $--link-underline-opacity)),
+			linear-gradient(to right, $--color-accent-oceanic, $--color-accent-oceanic);
+	}
+
+	#hero-image::before {
+		background-color: $--color-hero-oceanic;
+	}
+}
+
+[data-preferred-color-scheme="cookie"] {
+	::-webkit-scrollbar-track {
+		background-color: $--color-primary-cookie;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: darken($--color-grey-cookie, 20);
+
+		&:hover {
+			background-color: $--color-grey-cookie;
+		}
+	}
+
+	body {
+		background-color: $--color-primary-cookie;
+		color: $--color-secondary-cookie;
+
+		// Page route loading strip
+		&::before,
+		&::after {
+			background-color: $--color-accent-cookie;
+		}
+	}
+
+	.link {
+		background-image:
+			linear-gradient(to right, rgba($--color-accent-cookie, $--link-underline-opacity), rgba($--color-accent-cookie, $--link-underline-opacity)),
+			linear-gradient(to right, $--color-accent-cookie, $--color-accent-cookie);
+	}
+
+	#hero-image::before {
+		background-color: $--color-hero-cookie;
+	}
+}
+
+[data-preferred-color-scheme="pumpkin"] {
+	::-webkit-scrollbar-track {
+		background-color: $--color-primary-pumpkin;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: darken($--color-grey-pumpkin, 20);
+
+		&:hover {
+			background-color: $--color-grey-pumpkin;
+		}
+	}
+
+	body {
+		background-color: $--color-primary-pumpkin;
+		color: $--color-secondary-pumpkin;
+
+		// Page route loading strip
+		&::before,
+		&::after {
+			background-color: $--color-accent-pumpkin;
+		}
+	}
+
+	.link {
+		background-image:
+			linear-gradient(to right, rgba($--color-accent-pumpkin, $--link-underline-opacity), rgba($--color-accent-pumpkin, $--link-underline-opacity)),
+			linear-gradient(to right, $--color-accent-pumpkin, $--color-accent-pumpkin);
+	}
+
+	#hero-image::before {
+		background-color: $--color-hero-pumpkin;
+	}
+}

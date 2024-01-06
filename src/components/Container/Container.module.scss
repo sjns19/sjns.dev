@@ -1,0 +1,9 @@
+.container {
+	margin: 0 auto;
+	max-width: $--breakpoint-tablet;
+	min-width: $--breakpoint-small;
+
+	@include breakpoint(tablet) {
+		max-width: $--breakpoint-tablet - 200;
+	}
+}

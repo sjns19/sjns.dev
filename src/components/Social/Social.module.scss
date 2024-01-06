@@ -1,0 +1,42 @@
+.social {
+	$this: &;
+
+	display: flex;
+	margin-top: 1rem;
+
+	// .social-for-nav
+	&-for-nav {
+		border-top: 1px solid rgba($--color-grey-default, 0.2);
+		overflow: hidden;
+
+		// .social-for-nav.social-link
+		#{$this}-link {
+			margin: 0.75rem 0.55rem;
+			transform: translateY(50px);
+		}
+
+		// .social-for-nav.is-shown .social-link
+		&.is-shown #{$this}-link {
+			animation: slide-up $--transition-time 0.25s cubic-bezier(1, 0, .26, 1.1) forwards;
+		}
+
+		// .social-for-nav.is-hidden .social-link
+		&.is-hidden #{$this}-link {
+			animation: slide-down $--transition-time cubic-bezier(1, 0, .26, 1.1) forwards;
+		}
+	}
+
+	// Don't show the hover backdrop for the icons in about page
+	&:not(&-for-nav) &-link a>i {
+		padding-left: 0;
+
+		&::before {
+			display: none;
+		}
+	}
+
+	// .social-link
+	&-link {
+		margin-right: 0.75rem;
+	}
+}

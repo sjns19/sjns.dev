@@ -1,0 +1,142 @@
+/** SASS Mixins */
+
+// Media query for specified viewport
+@mixin screen-size($size) {
+	@media screen and #{$size} {
+		@content;
+	}
+}
+
+// Absolute breakpoints - tablet/mobile
+@mixin breakpoint($size) {
+	@if $size ==tablet {
+		@media only screen and (max-width: $--breakpoint-tablet) {
+			@content;
+		}
+	}
+
+	@else if $size ==mobile {
+		@media only screen and (max-width: $--breakpoint-mobile) {
+			@content;
+		}
+	}
+}
+
+// Checks for unsupported viewport
+@mixin unsupported-viewport {
+	@include screen-size($--breakpoint-unsupported) {
+		@content;
+	}
+}
+
+// Flexbox with props 
+@mixin flex($align: false, $wrap: false, $display: flex, $justify: false, $direction: false, $shrink: false) {
+	display: $display;
+
+	@if $align {
+		align-items: $align;
+	}
+
+	@if $wrap {
+		flex-wrap: $wrap;
+	}
+
+	@if $justify {
+		justify-content: $justify;
+	}
+
+	@if $direction {
+		flex-direction: $direction;
+	}
+
+	@if $shrink {
+		flex-shrink: $shrink;
+	}
+}
+
+// Sets top, left, right and bottom values
+@mixin inset($top: false, $left: false, $bottom: false, $right: false) {
+	@if $top {
+		top: $top;
+	}
+
+	@if $left {
+		left: $left;
+	}
+
+	@if $bottom {
+		bottom: $bottom;
+	}
+
+	@if $right {
+		right: $right;
+	}
+}
+
+// Height and width
+@mixin hw($height: false, $width: false) {
+	@if $width ==false {
+		height: $height;
+		width: $height;
+	}
+
+	@else {
+		height: $height;
+		width: $width;
+	}
+}
+
+
+// Font props
+@mixin font($size: false, $weight: false, $family: false, $decoration: false, $line-height: false, $spacing: false, $kering: false) {
+	@if $size {
+		font-size: $size;
+	}
+
+	@if $weight {
+		font-weight: $weight;
+	}
+
+	@if $family {
+		font-family: $family;
+	}
+
+	@if $decoration {
+		text-decoration: $decoration
+	}
+
+	@if $line-height {
+		line-height: $line-height;
+	}
+
+	@if $spacing {
+		letter-spacing: $spacing;
+	}
+
+	@if $kering {
+		font-kerning: $kering;
+	}
+}
+
+@mixin absolute-cover {
+	@include hw(100%);
+	@include inset(0, 0);
+}
+
+@mixin thumbnail-gradient($color: $--color-primary-default, $direction: right, $is-thumbnail: false) {
+	$degree: 90deg;
+	$bottom-radius: 35%;
+	$top-radius: 110%;
+
+	@if $direction ==top {
+		$degree: 0deg;
+	}
+
+	@if $is-thumbnail ==true {
+		$degree: 0deg;
+		$bottom-radius: 10%;
+		$top-radius: 70%;
+	}
+
+	background-image: linear-gradient($degree, $color $bottom-radius, rgba(255, 255, 255, 0) $top-radius);
+}

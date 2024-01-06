@@ -1,0 +1,152 @@
+.themer {
+	position: relative;
+	@include flex($justify: flex-end);
+	z-index: 8;
+
+	// .themer-toggler
+	&-toggler {
+		background-color: transparent;
+		color: $--color-secondary-default;
+		padding: 0;
+		border: none;
+		outline: none;
+		cursor: pointer;
+
+		// Backdrop
+		&::before {
+			position: fixed;
+			content: '';
+			background-color: $--color-primary-default;
+			@include absolute-cover;
+			opacity: 0;
+			transition: opacity $--transition-time $--bezier-curve;
+			pointer-events: none;
+		}
+
+		svg {
+			position: relative;
+			top: 0.1rem;
+		}
+	}
+
+	// .themer.is-shown .themer
+	&.is-shown & {
+		&-toggler::before {
+			opacity: 0.3;
+			pointer-events: all;
+		}
+
+		&-dropdown {
+			opacity: 1;
+			pointer-events: all;
+			transform: scale(1);
+		}
+	}
+
+	// .themer-dropdown
+	&-dropdown {
+		position: absolute;
+		background-color: darken($--color-darkgrey-default, 35);
+		padding: 1rem;
+		top: 2.55rem;
+		right: -1rem;
+		border-radius: 1rem;
+		pointer-events: none;
+		opacity: 0;
+		transform: scale(0);
+		transform-origin: 80% 0;
+		transition: transform 0.2s $--bezier-curve, opacity 0.1s;
+
+		&-content {
+			display: flex;
+		}
+	}
+
+	&-option {
+		$this: &;
+		@include flex($align: center, $justify: center);
+		@include hw(30px);
+		border-radius: 25px;
+		transform: rotate(45deg);
+		box-shadow: 0 0 0 1px $--color-darkgrey-default;
+
+		&:not(:last-child) {
+			margin-right: 1rem;
+		}
+
+		&-pill {
+			position: absolute;
+			@include absolute-cover;
+			margin: 0;
+			opacity: 0;
+			cursor: pointer;
+
+			&:checked~#{$this}-label {
+				transform: scale(0.84);
+				box-shadow: 0 0 0 3px darken($--color-darkgrey-default, 35), 0 0 0 5px $--color-accent-default;
+			}
+		}
+
+		&-label {
+			border-radius: inherit;
+			border-style: solid;
+			border-width: 15px;
+			border-color: $--color-primary-default $--color-accent-default $--color-grey-default $--color-secondary-default;
+			pointer-events: none;
+		}
+
+		&[data-color-scheme="oceanic"] &-label {
+			border-color: $--color-primary-oceanic $--color-accent-oceanic $--color-grey-oceanic $--color-secondary-oceanic;
+		}
+
+		&[data-color-scheme="cookie"] &-label {
+			border-color: $--color-primary-cookie $--color-accent-cookie $--color-grey-cookie $--color-secondary-cookie;
+		}
+
+		[data-color-scheme="pumpkin"] &-label {
+			border-color: $--color-primary-pumpkin $--color-accent-pumpkin $--color-grey-pumpkin $--color-secondary-pumpkin;
+		}
+	}
+}
+
+:global([data-preferred-color-scheme="oceanic"]) .themer {
+	&-toggler {
+		color: $--color-secondary-oceanic;
+	}
+
+	&-dropdown {
+		background-color: darken($--color-grey-oceanic, 48);
+	}
+
+	&-option-pill:checked~.themer-option-label {
+		box-shadow: 0 0 0 3px darken($--color-darkgrey-oceanic, 35), 0 0 0 5px $--color-accent-oceanic;
+	}
+}
+
+:global([data-preferred-color-scheme="cookie"]) .themer {
+	&-toggler {
+		color: $--color-secondary-cookie;
+	}
+
+	&-dropdown {
+		background-color: darken($--color-darkgrey-cookie, 35);
+	}
+
+	&-option-pill:checked~.themer-option-label {
+		box-shadow: 0 0 0 3px darken($--color-darkgrey-cookie, 35), 0 0 0 5px $--color-accent-cookie;
+	}
+}
+
+:global([data-preferred-color-scheme="pumpkin"]) .themer {
+	&-toggler {
+		color: $--color-secondary-pumpkin;
+	}
+
+	&-dropdown {
+		background-color: darken($--color-darkgrey-pumpkin, 32);
+	}
+
+	&-option-pill:checked~.themer-option-label {
+		box-shadow: 0 0 0 3px darken($--color-darkgrey-pumpkin, 35), 0 0 0 5px $--color-accent-pumpkin;
+	}
+}
