@@ -22,7 +22,7 @@ export default async function handler(_req: APIRequest, res: APIResponse<Blog[]>
 		console.log(error);
 
 		return res.status(400).json({
-			error: 'There was a problem fetching the posts.'
+			error: 'There was a problem fetching the posts: ' + error
 		});
 	}
 
