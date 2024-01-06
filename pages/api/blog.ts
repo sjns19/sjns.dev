@@ -12,7 +12,7 @@ import { XMLParser } from 'fast-xml-parser';
 export default async function handler(_req: APIRequest, res: APIResponse<Blog[]>) {
 	res.setHeader('Cache-Control', 's-maxage=864000');
 
-	const { data, error, status } = await httpRequest<string>(<string>process.env.MEDIUM_RSS_FEED, {
+	const { data, error, status } = await httpRequest<string>('https://medium.com/feed/@sjns19', {
 		headers: {
 			'Accept-Encoding': 'application/json',
 		}
@@ -22,7 +22,7 @@ export default async function handler(_req: APIRequest, res: APIResponse<Blog[]>
 		console.log(error);
 
 		return res.status(400).json({
-			error: 'There was a problem fetching the posts: ' + error
+			error: 'There was a problem fetching the posts.'
 		});
 	}
 
