@@ -1,7 +1,7 @@
 /** Configuration objects */
 
 /** Site URL */
-export const SITE_URL = 'https://sjns.dev';
+export const SITE_URL = 'https://www.sjns.dev';
 
 export const SITE_NAME = 'Sujan Shrestha';
 
@@ -11,7 +11,7 @@ export const defaultMetaProps = {
 	keywords: 'developer,web developer,web development,freelance,freelancer,freelance developer,frontend developer,backend developer,fullstack,fullstack developer,coding,coder,programming,programmer',
 	description: 'I am a self-taught developer specializing in creating web-based products.',
 	ogURL: SITE_URL,
-	ogImage: '/images/icons/icon-solid.png'
+	ogImage: SITE_URL + '/images/icons/icon-solid.png'
 };
 
 /** Data fetch type for zustand store */
