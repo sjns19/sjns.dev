@@ -24,6 +24,7 @@ export default function Meta({ title, keywords, description, ogURL, ogImage }: M
 			<meta name="twitter:card" content="summary" />
 			<meta name="twitter:domain" content="sjns.dev" />
 			<meta name="twitter:title" itemProp="name" content={title} />
+			<meta name="twitter:image" content={ogImage} />
 			<meta name="twitter:description" property="og:description" itemProp="description" content={description} />
 			<title>{title}</title>
 		</Head>
