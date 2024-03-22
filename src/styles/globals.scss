@@ -166,6 +166,7 @@ body {
 		background-image:
 			linear-gradient(to right, rgba($--color-accent-oceanic, $--link-underline-opacity), rgba($--color-accent-oceanic, $--link-underline-opacity)),
 			linear-gradient(to right, $--color-accent-oceanic, $--color-accent-oceanic);
+		color: $--color-secondary-oceanic;
 	}
 
 	#hero-image::before {
@@ -201,6 +202,7 @@ body {
 		background-image:
 			linear-gradient(to right, rgba($--color-accent-cookie, $--link-underline-opacity), rgba($--color-accent-cookie, $--link-underline-opacity)),
 			linear-gradient(to right, $--color-accent-cookie, $--color-accent-cookie);
+		color: $--color-secondary-cookie;
 	}
 
 	#hero-image::before {
@@ -236,6 +238,7 @@ body {
 		background-image:
 			linear-gradient(to right, rgba($--color-accent-pumpkin, $--link-underline-opacity), rgba($--color-accent-pumpkin, $--link-underline-opacity)),
 			linear-gradient(to right, $--color-accent-pumpkin, $--color-accent-pumpkin);
+		color: $--color-secondary-pumpkin;
 	}
 
 	#hero-image::before {
