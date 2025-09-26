@@ -11,7 +11,7 @@ const NavLinks = [
 	},
 	{
 		"link": "/blog",
-		"title": "Blog"
+		"title": "https://medium.com/me/stories?tab=posts-published"
 	},
 	{
 		"link": "/projects",
