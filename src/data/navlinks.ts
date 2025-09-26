@@ -10,7 +10,7 @@ const NavLinks = [
 		"title": "About"
 	},
 	{
-		"link": "https://medium.com/me/stories?tab=posts-published",
+		"link": "https://sjns19.medium.com/",
 		"title": "Blog"
 	},
 	{
