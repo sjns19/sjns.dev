@@ -10,8 +10,8 @@ const NavLinks = [
 		"title": "About"
 	},
 	{
-		"link": "/blog",
-		"title": "https://medium.com/me/stories?tab=posts-published"
+		"link": "https://medium.com/me/stories?tab=posts-published",
+		"title": "Blog"
 	},
 	{
 		"link": "/projects",
